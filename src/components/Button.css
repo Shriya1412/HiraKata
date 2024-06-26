@@ -1,0 +1,17 @@
+.button {
+    background-color: rgb(102, 168, 234); /* Adjust alpha (last value) as needed */
+    color: #000000; /* Light Blue text */
+    border: none;
+    width: 450px;
+    height: 110px;
+    margin-bottom: 80px;
+    font-family: "Italiana", sans-serif;
+    font-style: normal;
+    font-size: 48px;
+    border-radius: 30px;
+  }
+  
+  .button:hover {
+    background-color: #3d9df6; /* Lighter shade of Blue on hover */
+    color: #FFFFFF; /* White text on hover */
+  }

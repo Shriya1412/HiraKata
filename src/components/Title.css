@@ -1,0 +1,30 @@
+.italiana-regular {
+    font-family: "Italiana", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}  
+  
+  .title h1 {
+    font-family: "Italiana", sans-serif;
+    font-size: 100px;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 150px;
+    color: black; /* Adjust color as needed */
+  }
+  
+  .title h2 {
+    font-family: "Italiana", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 40px;
+    color: black; /* Adjust color as needed */
+    margin-left: 40px;
+    letter-spacing: 50px;
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 0px;
+  }
+  
