@@ -18,6 +18,7 @@ const Flashcards = () => {
       const shuffledCards = filteredCards.sort(() => 0.5 - Math.random()).slice(0, numberOfCards);
       setSelectedCards(shuffledCards);
       setShowPopup(false);
+      setCurrentCardIndex(0);
     };
   
     const handleFlip = () => {
@@ -27,15 +28,33 @@ const Flashcards = () => {
     const nextCard = useCallback(() => {
       setIsFlipped(false);
       setTimeout(() => {
-        setCurrentCardIndex((prevIndex) => (prevIndex + 1) % selectedCards.length);
-      }, 300); // This timeout should match the flip transition duration
+        setCurrentCardIndex((prevIndex) => {
+          const newIndex = (prevIndex + 1) % selectedCards.length;
+          return newIndex;
+        });
+      }, 500); // This timeout should match the flip transition duration
     }, [selectedCards.length]);
+
+    const handleRedo = () => {
+      setCurrentCardIndex(0);
+      setIsFlipped(false);
+    };
+
+    const handleNewSet = () => {
+      setShowPopup(true);
+      setSelectedCards([]);
+      setCurrentCardIndex(0);
+      setIsFlipped(false);
+
+    };
   
     useEffect(() => {
-      if (!showPopup) {
-        nextCard(); // To start with the first card after selection
+      if (!showPopup && selectedCards.length > 0 && currentCardIndex === 0) {
+        // Ensure to start with the first card after selection
+        setIsFlipped(false);
       }
-    }, [showPopup, nextCard]);
+    }, [showPopup, selectedCards.length, currentCardIndex]);
+  
   
     return (
       <div className="flashcards">
@@ -44,17 +63,34 @@ const Flashcards = () => {
           <div className="flashcard-container">
             <div className={`flashcard ${isFlipped ? 'flipped' : ''}`} onClick={handleFlip}>
               <div className="flashcard-front">
+                <div className="counter">
+                  {currentCardIndex + 1}/{selectedCards.length}
+                </div>
                 {selectedCards[currentCardIndex].char}
               </div>
               <div className="flashcard-back">
+                <div className="counter">
+                  {currentCardIndex + 1}/{selectedCards.length}
+                </div>
                 {selectedCards[currentCardIndex].romanized}
               </div>
             </div>
-            <button onClick={nextCard}>Next</button>
+            <div className="controls">
+              {currentCardIndex < selectedCards.length - 1 && (
+                <button id="next" onClick={nextCard}>Next</button>
+              )}
+              {currentCardIndex === selectedCards.length - 1 &&(
+                <div className="end-options-container">
+                  <div className="end-options">
+                    <button onClick={handleRedo}>Redo Same Set</button>
+                    <button onClick={handleNewSet}>Pick New Set</button>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         )}
       </div>
     );
   };
-  
   export default Flashcards;
