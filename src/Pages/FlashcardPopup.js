@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './FlashcardPopup.css';
 
 const FlashcardPopup = ({ onSubmit }) => {
   const [setType, setSetType] = useState('hiragana');
@@ -11,6 +12,7 @@ const FlashcardPopup = ({ onSubmit }) => {
 
   return (
     <div className="popup">
+      <h2>Create your Set</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Select Script:
@@ -30,7 +32,7 @@ const FlashcardPopup = ({ onSubmit }) => {
             required
           />
         </label>
-        <button type="submit">Start</button>
+        <button type="submit">Create</button>
       </form>
     </div>
   );
