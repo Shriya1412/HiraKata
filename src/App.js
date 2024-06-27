@@ -1,22 +1,20 @@
 import React from 'react';
-import './App.css';
-
-import Title from './components/Title';
-import Button from './components/Button';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import Flashcards from './Pages/Flashcards';
+import Learn from './Pages/Learn';
+import WordCreation from './Pages/WordCreation';
+import Home from './Pages/Home';
 
 function App() {
   return (
-    <div className="app">
-      <header className="app-header">
-        <Title text="HiraKata" subtitle="ひらカタ" />
-      </header>
-      <div className="button-container">
-        <Button label="Learn" />
-        <Button label="Word Creation" />
-        <Button label="Sentences" />
-      </div>
-    </div>
+    <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/flashcards" element={<Flashcards />} />
+          <Route path="/learn" element={<Learn />} />
+          <Route path="/word-creation" element={<WordCreation />} />
+        </Routes>
+    </Router>
   );
 }
-
 export default App;

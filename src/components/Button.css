@@ -10,7 +10,7 @@
     font-size: 48px;
     border-radius: 30px;
   }
-  
+
   .button:hover {
     background-color: #3d9df6; /* Lighter shade of Blue on hover */
     color: #FFFFFF; /* White text on hover */
