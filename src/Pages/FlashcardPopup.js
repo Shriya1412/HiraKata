@@ -1,13 +1,27 @@
 import React, { useState } from 'react';
 import './FlashcardPopup.css';
 
+const lines = ['vowels', 'k', 's', 't', 'n', 'h', 'm', 'y', 'r', 'w'];
+
 const FlashcardPopup = ({ onSubmit }) => {
   const [setType, setSetType] = useState('hiragana');
+  const [selectedLines, setSelectedLines] = useState([]);
   const [numberOfCards, setNumberOfCards] = useState('');
+  const [lineOption, setLineOption] = useState('random');
+
+  const handleLineChange = (line) => {
+    setSelectedLines(prevLines =>
+      prevLines.includes(line) ? prevLines.filter(l => l !== line) : [...prevLines, line]
+    );
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(setType, parseInt(numberOfCards, 10));
+    if (lineOption === 'random') {
+      onSubmit(setType, 'random', numberOfCards);
+    } else if (lineOption === 'custom') {
+      onSubmit(setType, 'custom', selectedLines);
+    }
   };
 
   return (
@@ -23,15 +37,38 @@ const FlashcardPopup = ({ onSubmit }) => {
           </select>
         </label>
         <label>
-          Number of Flashcards:
-          <input
-            type="number"
-            value={numberOfCards}
-            onChange={(e) => setNumberOfCards(e.target.value)}
-            min="1"
-            required
-          />
+          Line Option:
+          <select value={lineOption} onChange={(e) => setLineOption(e.target.value)}>
+            <option value="random">Random</option>
+            <option value="custom">Custom</option>
+          </select>
         </label>
+        {lineOption === 'custom' && (
+          <div className="lines-selection">
+            {lines.map(line => (
+              <label key={line} className="line-checkbox">
+                <input
+                  type="checkbox"
+                  value={line}
+                  onChange={() => handleLineChange(line)}
+                />
+                {line}
+              </label>
+            ))}
+          </div>
+        )}
+        {lineOption === 'random' && (
+          <label>
+            Number of Flashcards:
+            <input
+              type="number"
+              value={numberOfCards}
+              onChange={(e) => setNumberOfCards(e.target.value)}
+              min="1"
+              required
+            />
+          </label>
+        )}
         <button type="submit">Create</button>
       </form>
     </div>
