@@ -47,6 +47,7 @@
     grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns as needed */
     gap: 10px;
     margin-top: 10px;
+    margin-left: 100px;
   }
 
   .line-checkbox {
@@ -58,9 +59,9 @@
   }
 
   .line-checkbox input[type="checkbox"] {
-    width: 20px; /* Adjust width */
-    height: 20px; /* Adjust height */
-    margin-right: 5px; /* Adjust the space between the checkbox and label */
+    width: 40px; /* Adjust width */
+    height: 40px; /* Adjust height */
+    margin-right: 10px; /* Adjust the space between the checkbox and label */
     padding: 0; /* Ensure no extra padding */
   }
   
