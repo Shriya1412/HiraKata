@@ -23,6 +23,10 @@ const Flashcards = () => {
       if (lines.includes('w') && card.romanized === 'n') {
         return true;
       }
+      // check for n line with n exception
+      if (lines.includes('n') && card.romanized === 'n') {
+        return false;
+      }
       // Default filtering
       return lines.some(line => card.romanized.startsWith(line));
     });
