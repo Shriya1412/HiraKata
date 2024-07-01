@@ -41,11 +41,13 @@ const Learn = () => {
       setSelectedCards(shuffledCards);
     } else if (lineOption === 'custom') {
       const selectedLines = arg3;
-      filteredCards = flashcardsData.filter(card => 
-        selectedLines.some(line => 
-          lineMappings[line] && lineMappings[line].includes(card.romanized)
-        )
-      );
+      filteredCards = filteredCards.filter(card => {
+        // Check if the card's type matches setType and its romanized form is in any of the selectedLines arrays
+        return (setType === 'both' || card.type === setType) &&
+          selectedLines.some(line =>
+            lineMappings[line] && lineMappings[line].includes(card.romanized)
+          );
+      });
       setSelectedCards(filteredCards);
     }
 
