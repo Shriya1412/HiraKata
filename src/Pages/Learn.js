@@ -10,7 +10,7 @@ const lineMappings = {
   's': ['sa', 'shi', 'su', 'se', 'so'],
   't': ['ta', 'chi', 'tsu', 'te', 'to'],
   'n': ['na', 'ni', 'nu', 'ne', 'no'],
-  'h': ['ha', 'hi', 'hu/fu', 'he', 'ho'],
+  'h': ['ha', 'hi', 'fu', 'he', 'ho'],
   'm': ['ma', 'mi', 'mu', 'me', 'mo'],
   'y': ['ya', 'yu', 'yo'],
   'r': ['ra', 'ri', 'ru', 're', 'ro'],
@@ -181,7 +181,7 @@ const Learn = () => {
             <p>Incorrect:</p>
             <p className="stat-count">{incorrectCount}</p>
           </div>
-          <button onClick={redoSet} className="redo-button">Redo Set</button>
+          <button onClick={redoSet} className="redo-button">Redo Same Set</button>
           <button onClick={pickNewSet} className="new-set-button">Pick New Set</button>
         </div>
       )}

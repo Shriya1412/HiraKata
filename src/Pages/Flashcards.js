@@ -27,6 +27,10 @@ const Flashcards = () => {
       if (lines.includes('n') && card.romanized === 'n') {
         return false;
       }
+
+      if(lines.includes('h') && card.romanized === 'fu') {
+        return true;
+      }
       // Default filtering
       return lines.some(line => card.romanized.startsWith(line));
     });
